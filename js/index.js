@@ -23,26 +23,39 @@ const loadCards = async(categoryId) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent = '';
     data.data.forEach((card) => {
+        const findingItems = card.authors[0].profile_name;
+        
+        const badgeElement  = document.getElementsByClassName('badge');
+        const checkingItems = card.authors[0].verified;
+        // console.log(checkingItems)
+        if(checkingItems === true){
+            for(const badge of badgeElement){
+                badge.classList.remove('hidden')
+            }
+        }
         const div = document.createElement('div');
         div.classList = 'card bg-base-100 shadow-xl';
         div.innerHTML = `
-        <figure><img class="w-80 h-80 rounded-b-2xl rounded-t-2xl" src="${card.thumbnail}" alt="User" /></figure>
+        <figure><img class="w-80 h-72 rounded-b-2xl rounded-t-2xl" src="${card.thumbnail}" alt="User" /></figure>
                 <div class="flex mt-5 flex-row">
                     <img class="rounded-full mr-5 h-12 w-12" src="assets/IMG_20220901_174230.jpg" alt="">
                     <div>
                         <h2 class="card-title">
                             ${card.title}
                         </h2>
-                        <p class="inline">If a dog chews</p>
-                        <img class="inline h-6" src="assets/icons8-verified-account-48.png" alt="">
+                        <p class="inline">${findingItems}</p>
+                        <img class="inline hidden badge h-6" src="assets/icons8-verified-account-48.png" alt="">
                         <p class="mb-5">92k view</p>
                     </div>
                 </div>
         `;
+        
         cardContainer.appendChild(div)
-        console.log(card)
+        
+        // console.log(card)
     })
+    
 
-    console.log(data.data)
+    // console.log(data.data)
 }
 showCatagory();
