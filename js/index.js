@@ -18,6 +18,7 @@ const showCatagory =async () => {
 
 
 const loadCards = async(categoryId) => {
+    handleSpinner(true)
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data = await response.json();
     const cardContainer = document.getElementById('card-container');
@@ -55,7 +56,18 @@ const loadCards = async(categoryId) => {
         // console.log(card)
     })
     
+    handleSpinner(false)
+    
 
     // console.log(data.data)
+}
+// spinner handler
+const loader = document.getElementById('loader')
+const handleSpinner = (isLoading) => {
+    if(isLoading === true){
+        loader.classList.remove('hidden')
+    }else{
+        loader.classList.add('hidden')
+    }
 }
 showCatagory();
