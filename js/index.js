@@ -37,23 +37,23 @@ const loadCards = async(categoryId) => {
         const div = document.createElement('div');
         div.classList = 'card bg-base-100 shadow-xl';
         div.innerHTML = `
-        <figure><img class="w-80 h-72 rounded-b-2xl rounded-t-2xl" src="${card.thumbnail}" alt="User" /></figure>
+        <figure><img class="w-96 h-72 rounded-b-2xl rounded-t-2xl" src="${card.thumbnail}" alt="User" /></figure>
                 <div class="flex mt-5 flex-row">
-                    <img class="rounded-full mr-5 h-12 w-12" src="assets/IMG_20220901_174230.jpg" alt="">
+                    <img class="rounded-full mr-5 h-12 w-12" src="${card.authors[0].profile_picture}" alt="">
                     <div>
                         <h2 class="card-title">
                             ${card.title}
                         </h2>
                         <p class="inline">${findingItems}</p>
                         <img class="inline hidden badge h-6" src="assets/icons8-verified-account-48.png" alt="">
-                        <p class="mb-5">92k view</p>
+                        <p class="mb-5">${card.others.views} views</p>
                     </div>
                 </div>
         `;
         
         cardContainer.appendChild(div)
         
-        // console.log(card)
+        console.log(card)
     })
     const noResultContent = document.getElementById('no-resuld-content')
     if(cardContainer.childNodes.length < 1){
