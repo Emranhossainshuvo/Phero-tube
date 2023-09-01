@@ -55,6 +55,12 @@ const loadCards = async(categoryId) => {
         
         // console.log(card)
     })
+    const noResultContent = document.getElementById('no-resuld-content')
+    if(cardContainer.childNodes.length < 1){
+        noResultContent.classList.remove('hidden')
+    }else{
+        noResultContent.classList.add('hidden')
+    }
     
     handleSpinner(false)
     
