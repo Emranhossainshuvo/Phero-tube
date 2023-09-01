@@ -25,15 +25,20 @@ const loadCards = async(categoryId) => {
     cardContainer.textContent = '';
     data.data.forEach((card) => {
         const findingItems = card.authors[0].profile_name;
-        
-        const badgeElement  = document.getElementsByClassName('badge');
-        const checkingItems = card.authors[0].verified;
-        // console.log(checkingItems)
-        if(checkingItems === true){
-            for(const badge of badgeElement){
-                badge.classList.remove('hidden')
+        if(card && card.authors && card.authors[0]){
+            const badgeElement  = document.querySelectorAll('.badge');
+            const checkingItems = card.authors[0].verified;
+            if(checkingItems === true){
+                for(const badge of badgeElement){
+                    badge.classList.remove('hidden')
+
+                    console.log(badge)
+                    console.log(checkingItems)
+                }
             }
-        }
+                }
+                // console.log(checkingItems)
+                // console.log(checkingItems)
         const div = document.createElement('div');
         div.classList = 'card bg-base-100 shadow-xl';
         div.innerHTML = `
@@ -45,7 +50,7 @@ const loadCards = async(categoryId) => {
                             ${card.title}
                         </h2>
                         <p class="inline">${findingItems}</p>
-                        <img class="inline hidden badge h-6" src="assets/icons8-verified-account-48.png" alt="">
+                        <img class="inline badge hidden h-6" src="assets/icons8-verified-account-48.png" alt="">
                         <p class="mb-5">${card.others.views} views</p>
                     </div>
                 </div>
@@ -53,7 +58,7 @@ const loadCards = async(categoryId) => {
         
         cardContainer.appendChild(div)
         
-        console.log(card)
+        // console.log(card)
     })
     const noResultContent = document.getElementById('no-resuld-content')
     if(cardContainer.childNodes.length < 1){
@@ -76,4 +81,11 @@ const handleSpinner = (isLoading) => {
         loader.classList.add('hidden')
     }
 }
+
+document.getElementById('button-blog').addEventListener('click', function(){
+    window.location.href = "blog.html";
+})
+
+
+
 showCatagory();
