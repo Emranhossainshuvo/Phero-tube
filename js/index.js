@@ -50,7 +50,7 @@ const loadCards = async(categoryId) => {
                             ${card.title}
                         </h2>
                         <p class="inline">${findingItems}</p>
-                        <img class="inline badge hidden h-6" src="assets/icons8-verified-account-48.png" alt="">
+                        <img class="badge hidden h-6" src="assets/icons8-verified-account-48.png" alt="">
                         <p class="mb-5">${card.others.views} views</p>
                     </div>
                 </div>
