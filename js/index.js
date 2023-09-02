@@ -17,10 +17,11 @@ const showCatagory =async () => {
 
 
 
-const loadCards = async(categoryId) => {
+const loadCards = async(categoryId = "1001") => {
     handleSpinner(true)
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data = await response.json();
+    // handleSort(data.data)
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent = '';
     data.data.forEach((card) => {
@@ -32,8 +33,8 @@ const loadCards = async(categoryId) => {
                 for(const badge of badgeElement){
                     badge.classList.remove('hidden')
 
-                    console.log(badge)
-                    console.log(checkingItems)
+                    // console.log(badge)
+                    // console.log(checkingItems)
                 }
             }
                 }
@@ -75,7 +76,7 @@ const loadCards = async(categoryId) => {
 // spinner handler
 const loader = document.getElementById('loader')
 const handleSpinner = (isLoading) => {
-    if(isLoading === true){
+    if(isLoading){
         loader.classList.remove('hidden')
     }else{
         loader.classList.add('hidden')
@@ -86,6 +87,15 @@ document.getElementById('button-blog').addEventListener('click', function(){
     window.location.href = "blog.html";
 })
 
+// const handleSort = (data) => {
+//     // console.log(data)
 
+//     data.forEach((figure) => {
+//         let specific = figure.others
+//         const specificNumber = parseInt(specific)
+//         // console.log(specificNumber)
+//     })
+
+// }
 
 showCatagory();
