@@ -15,8 +15,6 @@ const showCatagory =async () => {
         
 }
 
-
-
 const loadCards = async(categoryId = "1001") => {
     handleSpinner(true)
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
